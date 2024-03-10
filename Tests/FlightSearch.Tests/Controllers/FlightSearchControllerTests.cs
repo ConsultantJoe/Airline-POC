@@ -18,5 +18,6 @@ public class FlightSearchControllerTests
     [Fact]
     public void GetShouldReturnPayload_WhenCorrectParametersArePassed()
     {
+
     }
 }
