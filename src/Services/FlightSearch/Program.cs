@@ -24,6 +24,9 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
+        // Wireup the FlightSearchService and its dependencies.
+        builder.AddFlightSearchService();
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.

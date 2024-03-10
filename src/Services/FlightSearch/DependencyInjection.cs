@@ -3,6 +3,9 @@
 // </copyright>
 
 using System.Configuration;
+using FlightSearch.Configuration;
+using FlightSearch.Repositories;
+using FlightSearch.Services;
 
 namespace FlightSearch;
 
@@ -12,13 +15,25 @@ namespace FlightSearch;
 public static class DependencyInjection
 {
     /// <summary>
-    /// Setups the IWeatherService and its dependencies.
+    /// Setup the IFlightSearchService and its dependencies.
     /// </summary>
     /// <param name="builder">WebApplicationBuilder to register into.</param>
     /// <returns>WebApplicationBuilder with dependencies registered.</returns>
     /// <exception cref="ConfigurationErrorsException">Thrown if configuration item is missing or invalid.</exception>
     public static WebApplicationBuilder AddFlightSearchService(this WebApplicationBuilder builder)
     {
-       return builder;
+        var flightSearchConfiguration = builder.Configuration.GetSection(nameof(FlightSearchConfiguration)).Get<FlightSearchConfiguration>();
+
+        if (flightSearchConfiguration is null)
+        {
+            throw new ConfigurationErrorsException($"{nameof(flightSearchConfiguration)} is invalid or missing");
+        }
+
+        builder.Services
+            .AddSingleton(flightSearchConfiguration)
+            .AddSingleton<IFlightSearchService, FlightSearchService>()
+            .AddSingleton<IFlightsDao, FlightsDao>();
+
+        return builder;
     }
 }
