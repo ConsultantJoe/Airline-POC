@@ -3,6 +3,7 @@
 // </copyright>
 
 using FlightSearch.Models;
+using FlightSearch.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlightSearch.Controllers;
@@ -15,16 +16,17 @@ namespace FlightSearch.Controllers;
 public class FlightSearchController : ControllerBase
 {
     private readonly ILogger<FlightSearchController> _logger;
-
+    private readonly IFlightSearchService _flightSearchService;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="FlightSearchController"/> class.
     /// </summary>
     /// <param name="logger">Logger that is wired up via DI.</param>
     /// <exception cref="ArgumentNullException">Thrown if a parameter is missing.</exception>
-    public FlightSearchController(ILogger<FlightSearchController> logger)
+    public FlightSearchController(ILogger<FlightSearchController> logger, IFlightSearchService flightSearchService)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _flightSearchService = flightSearchService ?? throw new ArgumentNullException(nameof(flightSearchService));
     }
 
     /// <summary>
@@ -35,8 +37,8 @@ public class FlightSearchController : ControllerBase
     /// <param name="departureDate">Departure date flying on.</param>
     /// <returns>List of Flight results.</returns>
     [HttpGet(Name = "FindFlights")]
-    public IEnumerable<FlightSearchPayload> Get(string origin, string destination, DateTime departureDate)
+    public async Task<IEnumerable<FlightSearchPayload>> Get(string origin, string destination, DateTime departureDate)
     {
-        return new List<FlightSearchPayload>();
+        return await _flightSearchService.findFlights(origin, destination, departureDate);
     }
 }
