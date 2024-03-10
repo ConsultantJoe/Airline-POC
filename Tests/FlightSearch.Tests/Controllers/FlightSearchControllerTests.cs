@@ -16,7 +16,7 @@ namespace FlightSearch.Tests;
 public class FlightSearchControllerTests
 {
     /// <summary>
-    /// Tests the ILogger in the constructor.
+    /// Tests the ILogger missing in the constructor.
     /// </summary>
     [Fact]
     public void ConstructorShouldThrowError_WhenILoggerIsNull()
@@ -26,7 +26,7 @@ public class FlightSearchControllerTests
     }
 
     /// <summary>
-    /// Tests the IFlightSearchService in the constructor.
+    /// Tests the IFlightSearchService missing in the constructor.
     /// </summary>
     [Fact]
     public void ConstructorShouldThrowError_WhenIFlightSearchServiceIsNull()
@@ -44,13 +44,13 @@ public class FlightSearchControllerTests
     {
         // Arrange
         var searchService = Substitute.For<IFlightSearchService>();
-        searchService.findFlights(string.Empty, string.Empty, default)
+        searchService.FindFlights(string.Empty, string.Empty)
             .ReturnsForAnyArgs(Task.FromResult(FlightSearchHelper.GetFlightSearchPayload()));
 
         var controller = new FlightSearchController(Substitute.For<ILogger<FlightSearchController>>(), searchService);
 
         // Act
-        var result = await controller.Get("DEN", "JFK", DateTime.Parse("2024-06-09"));
+        var result = await controller.Get("DEN", "JFK");
 
         // Assert
         Assert.NotNull(result);

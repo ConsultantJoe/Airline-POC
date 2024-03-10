@@ -37,8 +37,8 @@ public class FlightSearchController : ControllerBase
     /// <param name="departureDate">Departure date flying on.</param>
     /// <returns>List of Flight results.</returns>
     [HttpGet(Name = "FindFlights")]
-    public async Task<IEnumerable<FlightSearchPayload>> Get(string origin, string destination, DateTime departureDate)
+    public async Task<IEnumerable<FlightSearchPayload>> Get(string origin, string destination)
     {
-        return await _flightSearchService.findFlights(origin, destination, departureDate);
+        return await _flightSearchService.FindFlights(origin, destination);
     }
 }
