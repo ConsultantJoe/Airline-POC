@@ -6,6 +6,7 @@ using System.Configuration;
 using FlightSearch.Configuration;
 using FlightSearch.Repositories;
 using FlightSearch.Services;
+using Serilog;
 
 namespace FlightSearch;
 
@@ -33,6 +34,22 @@ public static class DependencyInjection
             .AddSingleton(flightSearchConfiguration)
             .AddSingleton<IFlightSearchService, FlightSearchService>()
             .AddSingleton<IFlightsDao, FlightsDao>();
+
+        return builder;
+    }
+
+    /// <summary>
+    /// Setup Logging and Tracing.
+    /// </summary>
+    /// <param name="builder">WebApplicationBuilder to register into.</param>
+    /// <param name="serviceName">Name of the Service that Logging is being configured for.</param>
+    /// <returns>WebApplicationBuilder with dependencies registered.</returns>
+    public static WebApplicationBuilder AddLoggingAndTracing(this WebApplicationBuilder builder, string serviceName)
+    {
+        builder.Host.UseSerilog((ctx, lc) =>
+            lc.ReadFrom
+                .Configuration(ctx.Configuration)
+                .Enrich.WithProperty("Application", serviceName));
 
         return builder;
     }

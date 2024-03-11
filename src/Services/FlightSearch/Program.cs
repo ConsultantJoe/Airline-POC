@@ -27,6 +27,9 @@ public class Program
         // Wireup the FlightSearchService and its dependencies.
         builder.AddFlightSearchService();
 
+        // Wireup serilog
+        builder.AddLoggingAndTracing("FlightSearch");
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.

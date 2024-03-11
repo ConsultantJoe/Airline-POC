@@ -5,6 +5,7 @@
 using FlightSearch.Models;
 using FlightSearch.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace FlightSearch.Controllers;
 
@@ -39,6 +40,7 @@ public class FlightSearchController : ControllerBase
     [HttpGet(Name = "FindFlights")]
     public async Task<IEnumerable<FlightSearchPayload>> Get(string origin, string destination)
     {
+        _logger.LogInformation("Getting Flights from the FlightSearchService");
         return await _flightSearchService.FindFlights(origin, destination);
     }
 }

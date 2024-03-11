@@ -36,6 +36,8 @@ public class FlightSearchService : IFlightSearchService
             throw new InvalidDataException("Invaild or missing flight data.");
         }
 
+        _logger.LogInformation($"Getting flights for the route between {origin} and {destination}.");
+
         return flights.Where(f => f.Origin == origin && f.Destination == destination)
             .AsEnumerable();
     }
