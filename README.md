@@ -5,6 +5,8 @@ This POC is a basic example of how I write microservices.  It adheres to SOLID p
 
 The service its self is base on a simple flight search. Its source data consists of a JSON file and is queried via Linq.  Logging is implemented via Serilog and Seq is also utilized for log management. 
 
+I will eventually add more services and [Dapr](https://docs.dapr.io/concepts/overview/) support.  It would be nice to implement Dapr Actors for session management.  I have used this in the past to manage user sessions which, when utilized across all platforms, allows a user to start a session on one platform and complete it on another.
+
 ## Flight Search Sequence Diagram
 ```mermaid
 sequenceDiagram
