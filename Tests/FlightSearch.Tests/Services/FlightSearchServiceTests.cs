@@ -1,12 +1,20 @@
-﻿using FlightSearch.Controllers;
+﻿// <copyright file="FlightSearchServiceTests.cs" company="Consultant Joes Inc">
+// Copyright (c) Consultant Joes Inc. All rights reserved.
+// </copyright>
+
 using FlightSearch.Repositories;
 using FlightSearch.Services;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 
 namespace FlightSearch.Tests.Services;
+
+/// <summary>
+/// Tests for the FlightSearchService.
+/// </summary>
 public class FlightSearchServiceTests
 {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
     /// <summary>
     /// Tests the ILogger missing in the constructor.
     /// </summary>
@@ -28,7 +36,7 @@ public class FlightSearchServiceTests
     }
 
     /// <summary>
-    /// Tests that a populated payload is returned if the correct values are passed in. 
+    /// Tests that a populated payload is returned if the correct values are passed in.
     /// </summary>
     /// <returns>A Empty Task.</returns>
     [Fact]
@@ -50,7 +58,7 @@ public class FlightSearchServiceTests
     }
 
     /// <summary>
-    /// Tests that a empty payload is returned if the correct values are passed in. 
+    /// Tests that a empty payload is returned if the correct values are passed in.
     /// </summary>
     /// <returns>A Empty Task.</returns>
     [Fact]
@@ -70,4 +78,5 @@ public class FlightSearchServiceTests
         Assert.NotNull(flights);
         Assert.Empty(flights);
     }
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 }

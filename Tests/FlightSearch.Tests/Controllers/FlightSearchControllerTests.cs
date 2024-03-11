@@ -6,7 +6,6 @@ using FlightSearch.Controllers;
 using FlightSearch.Services;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
-using NSubstitute.ExceptionExtensions;
 
 namespace FlightSearch.Tests;
 
@@ -15,6 +14,7 @@ namespace FlightSearch.Tests;
 /// </summary>
 public class FlightSearchControllerTests
 {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
     /// <summary>
     /// Tests the ILogger missing in the constructor.
     /// </summary>
@@ -56,4 +56,5 @@ public class FlightSearchControllerTests
         Assert.NotNull(result);
         Assert.NotEmpty(result);
     }
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 }

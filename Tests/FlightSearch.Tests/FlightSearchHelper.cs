@@ -1,11 +1,14 @@
-﻿using FlightSearch.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="FlightSearchHelper.cs" company="Consultant Joes Inc">
+// Copyright (c) Consultant Joes Inc. All rights reserved.
+// </copyright>
+
+using FlightSearch.Models;
 
 namespace FlightSearch.Tests;
+
+/// <summary>
+/// Helper to aid with Unit Testing.
+/// </summary>
 public static class FlightSearchHelper
 {
     /// <summary>
@@ -26,5 +29,4 @@ public static class FlightSearchHelper
                 FlightNumber = "AS450",
             },
         };
-
 }

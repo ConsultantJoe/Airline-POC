@@ -5,7 +5,6 @@
 using FlightSearch.Models;
 using FlightSearch.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace FlightSearch.Controllers;
 
@@ -23,6 +22,7 @@ public class FlightSearchController : ControllerBase
     /// Initializes a new instance of the <see cref="FlightSearchController"/> class.
     /// </summary>
     /// <param name="logger">Logger that is wired up via DI.</param>
+    /// <param name="flightSearchService">FlightSearchService that is wired up via DI.</param>
     /// <exception cref="ArgumentNullException">Thrown if a parameter is missing.</exception>
     public FlightSearchController(ILogger<FlightSearchController> logger, IFlightSearchService flightSearchService)
     {
@@ -35,7 +35,6 @@ public class FlightSearchController : ControllerBase
     /// </summary>
     /// <param name="origin">Origin airport to use in search.</param>
     /// <param name="destination">Destination airport to use in search.</param>
-    /// <param name="departureDate">Departure date flying on.</param>
     /// <returns>List of Flight results.</returns>
     [HttpGet(Name = "FindFlights")]
     public async Task<IEnumerable<FlightSearchPayload>> Get(string origin, string destination)

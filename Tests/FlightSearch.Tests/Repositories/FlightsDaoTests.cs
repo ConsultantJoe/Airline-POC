@@ -12,6 +12,7 @@ namespace FlightSearch.Tests.Repositories;
 /// </summary>
 public class FlightsDaoTests
 {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
     /// <summary>
     /// Constructor test.
     /// </summary>
@@ -43,4 +44,5 @@ public class FlightsDaoTests
         Assert.NotNull(result);
         Assert.True(result.Count() == 6);
     }
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 }

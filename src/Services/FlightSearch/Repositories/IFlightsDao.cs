@@ -1,4 +1,4 @@
-﻿// <copyright file="IFlighsDao.cs" company="Consultant Joes Inc">
+﻿// <copyright file="IFlightsDao.cs" company="Consultant Joes Inc">
 // Copyright (c) Consultant Joes Inc. All rights reserved.
 // </copyright>
 
