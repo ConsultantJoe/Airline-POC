@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  flightsearch:
+    image: ${DOCKER_REGISTRY-}flightsearch
+    build:
+      context: src/Services/FlightSearch
+      dockerfile: Dockerfile
+    networks:
+      - flightsearch-network
+       
+  seq:
+    image: datalust/seq:latest
+    networks:
+      - flightsearch-network
+
+
+networks:
+  flightsearch-network:
+    driver: bridge
