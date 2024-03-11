@@ -38,7 +38,7 @@ public class FlightSearchService : IFlightSearchService
 
         _logger.LogInformation($"Getting flights for the route between {origin} and {destination}.");
 
-        return flights.Where(f => f.Origin == origin && f.Destination == destination)
+        return flights.Where(f => f.Origin.ToUpper() == origin.ToUpper() && f.Destination.ToUpper() == destination.ToUpper())
             .AsEnumerable();
     }
 }
