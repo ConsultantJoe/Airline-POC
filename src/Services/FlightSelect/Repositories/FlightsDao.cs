@@ -13,19 +13,19 @@ namespace FlightSelect.Repositories;
 /// </summary>
 public class FlightsDao : IFlightsDao
 {
-    private readonly FlightSearchConfiguration _flightSearchConfiguration;
+    private readonly FlightSelectConfiguration _flightSearchConfiguration;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="FlightsDao"/> class.
     /// </summary>
     /// <param name="flightSearchConfiguration">Config for flight search.</param>
-    public FlightsDao(FlightSearchConfiguration flightSearchConfiguration)
+    public FlightsDao(FlightSelectConfiguration flightSearchConfiguration)
     {
         _flightSearchConfiguration = flightSearchConfiguration ?? throw new ArgumentNullException(nameof(flightSearchConfiguration));
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<FlightSearchPayload>> GetAll()
+    public async Task<IEnumerable<FlightSelectPayload>> GetAll()
     {
         var flightsJson = new FileStream(_flightSearchConfiguration.FlightsDataPath, FileMode.Open, FileAccess.Read);
 
@@ -34,6 +34,6 @@ public class FlightsDao : IFlightsDao
             throw new ArgumentNullException(nameof(flightsJson));
         }
 
-        return await JsonSerializer.DeserializeAsync<List<FlightSearchPayload>>(flightsJson) ?? throw new ArgumentNullException($"Unable to deserilize {_flightSearchConfiguration.FlightsDataPath}.");
+        return await JsonSerializer.DeserializeAsync<List<FlightSelectPayload>>(flightsJson) ?? throw new ArgumentNullException($"Unable to deserilize {_flightSearchConfiguration.FlightsDataPath}.");
     }
 }

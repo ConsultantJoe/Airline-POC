@@ -9,7 +9,7 @@ namespace FlightSelect.Tests;
 /// <summary>
 /// Helper to aid with Unit Testing.
 /// </summary>
-public static class FlightSearchHelper
+public static class FlightSelectHelper
 {
     /// <summary>
     /// Gets a FlightSearchPayload for unit testing.

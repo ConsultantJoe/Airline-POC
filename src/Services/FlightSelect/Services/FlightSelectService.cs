@@ -1,4 +1,4 @@
-﻿// <copyright file="FlightSearchService.cs" company="Consultant Joes Inc">
+﻿// <copyright file="FlightSelectService.cs" company="Consultant Joes Inc">
 // Copyright (c) Consultant Joes Inc. All rights reserved.
 // </copyright>
 
@@ -10,25 +10,25 @@ namespace FlightSelect.Services;
 /// <summary>
 /// Service used for flight related tasks.
 /// </summary>
-public class FlightSearchService : IFlightSearchService
+public class FlightSelectService : IFlightSelectService
 {
-    private readonly ILogger<FlightSearchService> _logger;
+    private readonly ILogger<FlightSelectService> _logger;
     private readonly IFlightsDao _flightsDao;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FlightSearchService"/> class.
+    /// Initializes a new instance of the <see cref="FlightSelectService"/> class.
     /// </summary>
     /// <param name="logger">Logger that is wired up via DI.</param>
     /// <param name="flightsDao">Repo used to get data from JSON file.</param>
     /// <exception cref="ArgumentNullException">Thrown if a parameter is missing.</exception>
-    public FlightSearchService(ILogger<FlightSearchService> logger, IFlightsDao flightsDao)
+    public FlightSelectService(ILogger<FlightSelectService> logger, IFlightsDao flightsDao)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _flightsDao = flightsDao ?? throw new ArgumentNullException(nameof(flightsDao));
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<FlightSearchPayload>> FindFlights(string origin, string destination)
+    public async Task<IEnumerable<FlightSelectPayload>> BookFlight(Guid flightId)
     {
         var flights = await _flightsDao.GetAll();
         if (flights == null)
@@ -36,9 +36,8 @@ public class FlightSearchService : IFlightSearchService
             throw new InvalidDataException("Invaild or missing flight data.");
         }
 
-        _logger.LogInformation($"Getting flights for the route between {origin} and {destination}.");
+        _logger.LogInformation($"Getting flights for flightId {flightId}.");
 
-        return flights.Where(f => f.Origin.ToUpper() == origin.ToUpper() && f.Destination.ToUpper() == destination.ToUpper())
-            .AsEnumerable();
+        return flights.Where(f => f.FlightId == flightId).AsEnumerable();
     }
 }

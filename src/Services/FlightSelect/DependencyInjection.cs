@@ -16,14 +16,14 @@ namespace FlightSelect;
 public static class DependencyInjection
 {
     /// <summary>
-    /// Setup the IFlightSearchService and its dependencies.
+    /// Setup the IFlightSelectService and its dependencies.
     /// </summary>
     /// <param name="builder">WebApplicationBuilder to register into.</param>
     /// <returns>WebApplicationBuilder with dependencies registered.</returns>
     /// <exception cref="ConfigurationErrorsException">Thrown if configuration item is missing or invalid.</exception>
-    public static WebApplicationBuilder AddFlightSearchService(this WebApplicationBuilder builder)
+    public static WebApplicationBuilder AddFlightSelectService(this WebApplicationBuilder builder)
     {
-        var flightSearchConfiguration = builder.Configuration.GetSection(nameof(FlightSearchConfiguration)).Get<FlightSearchConfiguration>();
+        var flightSearchConfiguration = builder.Configuration.GetSection(nameof(FlightSelectConfiguration)).Get<FlightSelectConfiguration>();
 
         if (flightSearchConfiguration is null)
         {
@@ -32,7 +32,7 @@ public static class DependencyInjection
 
         builder.Services
             .AddSingleton(flightSearchConfiguration)
-            .AddSingleton<IFlightSearchService, FlightSearchService>()
+            .AddSingleton<IFlightSelectService, FlightSelectService>()
             .AddSingleton<IFlightsDao, FlightsDao>();
 
         return builder;

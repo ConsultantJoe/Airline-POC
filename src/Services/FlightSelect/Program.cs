@@ -24,8 +24,8 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        // Wireup the FlightSearchService and its dependencies.
-        builder.AddFlightSearchService();
+        // Wireup the FlightSelectService and its dependencies.
+        builder.AddFlightSelectService();
 
         // Wireup serilog
         builder.AddLoggingAndTracing("FlightSearch");

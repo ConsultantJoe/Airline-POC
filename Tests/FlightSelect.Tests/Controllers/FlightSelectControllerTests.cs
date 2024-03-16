@@ -12,7 +12,7 @@ namespace FlightSelect.Tests;
 /// <summary>
 /// Test class for testing the FlightSearchController.
 /// </summary>
-public class FlightSearchControllerTests
+public class FlightSelectControllerTests
 {
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
     /// <summary>
@@ -45,7 +45,7 @@ public class FlightSearchControllerTests
         // Arrange
         var searchService = Substitute.For<IFlightSearchService>();
         searchService.FindFlights(string.Empty, string.Empty)
-            .ReturnsForAnyArgs(Task.FromResult(FlightSearchHelper.GetFlightSearchPayload()));
+            .ReturnsForAnyArgs(Task.FromResult(FlightSelectHelper.GetFlightSearchPayload()));
 
         var controller = new FlightSearchController(Substitute.For<ILogger<FlightSearchController>>(), searchService);
 

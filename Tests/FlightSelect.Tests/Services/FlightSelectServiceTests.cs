@@ -12,7 +12,7 @@ namespace FlightSelect.Tests.Services;
 /// <summary>
 /// Tests for the FlightSearchService.
 /// </summary>
-public class FlightSearchServiceTests
+public class FlightSelectServiceTests
 {
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
     /// <summary>
@@ -45,7 +45,7 @@ public class FlightSearchServiceTests
         // Arrange
         var flightsDao = Substitute.For<IFlightsDao>();
         flightsDao.GetAll()
-            .Returns(Task.FromResult(FlightSearchHelper.GetFlightSearchPayload()));
+            .Returns(Task.FromResult(FlightSelectHelper.GetFlightSearchPayload()));
 
         var service = new FlightSearchService(Substitute.For<ILogger<FlightSearchService>>(), flightsDao);
 
@@ -67,7 +67,7 @@ public class FlightSearchServiceTests
         // Arrange
         var flightsDao = Substitute.For<IFlightsDao>();
         flightsDao.GetAll()
-            .Returns(Task.FromResult(FlightSearchHelper.GetFlightSearchPayload()));
+            .Returns(Task.FromResult(FlightSelectHelper.GetFlightSearchPayload()));
 
         var service = new FlightSearchService(Substitute.For<ILogger<FlightSearchService>>(), flightsDao);
 

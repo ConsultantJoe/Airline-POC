@@ -7,7 +7,7 @@ namespace FlightSelect.Models;
 /// <summary>
 /// Payload for a flight search.
 /// </summary>
-public class FlightSearchPayload
+public class FlightSelectPayload
 {
     /// <summary>
     /// Gets or Sets the Flight Id.

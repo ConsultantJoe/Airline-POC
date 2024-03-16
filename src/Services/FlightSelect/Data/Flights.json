@@ -1,0 +1,56 @@
+  [
+    {
+      "FlightId": "2fc3f906-3dc2-4c17-bf0d-ec5533c5a2af",
+      "FlightNumber": "AS123",
+      "Origin": "DEN",
+      "Destination": "JFK",
+      "DepartureTime": "2024-06-09T08:00:00",
+      "ArrivalTime": "2024-06-09T12:00:00",
+      "Price": 250.00
+    },
+    {
+      "FlightId": "65457a8d-ee88-4f82-91d6-49d7c98c9437",
+      "FlightNumber": "AS456",
+      "Origin": "DEN",
+      "Destination": "ORD",
+      "DepartureTime": "2024-06-09T10:00:00",
+      "ArrivalTime": "2024-06-09T12:30:00",
+      "Price": 180.00
+    },
+    {
+      "FlightId": "cfb7f38e-1e14-4f95-a2c0-265c59f0b0b7",
+      "FlightNumber": "AS789",
+      "Origin": "DEN",
+      "Destination": "LAX",
+      "DepartureTime": "2024-06-09T11:30:00",
+      "ArrivalTime": "2024-06-09T14:30:00",
+      "Price": 300.00
+    },
+    {
+      "FlightId": "d67aaf0d-6847-43c7-a65e-929e40a49777",
+      "FlightNumber": "AS234",
+      "Origin": "SEA",
+      "Destination": "SFO",
+      "DepartureTime": "2024-06-10T09:30:00",
+      "ArrivalTime": "2024-06-10T11:30:00",
+      "Price": 200.00
+    },
+    {
+      "FlightId": "4ebbe143-fbcd-4a7c-b513-2c16c83670ac",
+      "FlightNumber": "AS567",
+      "Origin": "SEA",
+      "Destination": "DFW",
+      "DepartureTime": "2024-06-10T12:00:00",
+      "ArrivalTime": "2024-06-10T16:00:00",
+      "Price": 320.00
+    },
+    {
+      "FlightId": "6b09f5c1-1520-430b-89d4-c42c0b9de0f4",
+      "FlightNumber": "AS890",
+      "Origin": "SEA",
+      "Destination": "MIA",
+      "DepartureTime": "2024-06-10T14:30:00",
+      "ArrivalTime": "2024-06-10T20:30:00",
+      "Price": 400.00
+    }
+  ]

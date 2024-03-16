@@ -13,21 +13,21 @@ namespace FlightSelect.Controllers;
 /// </summary>
 [ApiController]
 [Route("[controller]")]
-public class FlightSearchController : ControllerBase
+public class FlightSelectController : ControllerBase
 {
-    private readonly ILogger<FlightSearchController> _logger;
-    private readonly IFlightSearchService _flightSearchService;
+    private readonly ILogger<FlightSelectController> _logger;
+    private readonly IFlightSelectService _flightSelectService;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FlightSearchController"/> class.
+    /// Initializes a new instance of the <see cref="FlightSelectController"/> class.
     /// </summary>
     /// <param name="logger">Logger that is wired up via DI.</param>
-    /// <param name="flightSearchService">FlightSearchService that is wired up via DI.</param>
+    /// <param name="flightSelectService">FlightSelectService that is wired up via DI.</param>
     /// <exception cref="ArgumentNullException">Thrown if a parameter is missing.</exception>
-    public FlightSearchController(ILogger<FlightSearchController> logger, IFlightSearchService flightSearchService)
+    public FlightSelectController(ILogger<FlightSelectController> logger, IFlightSelectService flightSelectService)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        _flightSearchService = flightSearchService ?? throw new ArgumentNullException(nameof(flightSearchService));
+        _flightSelectService = flightSelectService ?? throw new ArgumentNullException(nameof(flightSelectService));
     }
 
     /// <summary>
@@ -36,10 +36,10 @@ public class FlightSearchController : ControllerBase
     /// <param name="origin">Origin airport to use in search.</param>
     /// <param name="destination">Destination airport to use in search.</param>
     /// <returns>List of Flight results.</returns>
-    [HttpGet(Name = "FindFlights")]
-    public async Task<IEnumerable<FlightSearchPayload>> Get(string origin, string destination)
+    [HttpPost(Name = "BookFlight")]
+    public async Task<IEnumerable<FlightSelectPayload>> Get(Guid flightId)
     {
         _logger.LogInformation("Getting Flights from the FlightSearchService");
-        return await _flightSearchService.FindFlights(origin, destination);
+        return await _flightSelectService.BookFlight(flightId);
     }
 }

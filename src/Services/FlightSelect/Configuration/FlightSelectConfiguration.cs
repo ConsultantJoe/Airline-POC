@@ -1,4 +1,4 @@
-﻿// <copyright file="FlightSearchConfiguration.cs" company="Consultant Joes Inc">
+﻿// <copyright file="FlightSelectConfiguration.cs" company="Consultant Joes Inc">
 // Copyright (c) Consultant Joes Inc. All rights reserved.
 // </copyright>
 
@@ -7,7 +7,7 @@ namespace FlightSelect.Configuration;
 /// <summary>
 /// Configuraton for the Flight Search populated from appsettings.
 /// </summary>
-public class FlightSearchConfiguration
+public class FlightSelectConfiguration
 {
     /// <summary>
     /// Gets or sets the FlightsDataPath.
