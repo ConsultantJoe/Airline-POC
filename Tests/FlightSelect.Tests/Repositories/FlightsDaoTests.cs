@@ -31,7 +31,7 @@ public class FlightsDaoTests
     public async Task ShouldReturnAllData_WhenGetAllIsCalled()
     {
         // Arrange
-        var config = new FlightSearchConfiguration
+        var config = new FlightSelectConfiguration
         {
             FlightsDataPath = "Data/Flights.json",
         };

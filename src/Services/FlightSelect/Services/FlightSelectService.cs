@@ -28,7 +28,7 @@ public class FlightSelectService : IFlightSelectService
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<FlightSelectPayload>> BookFlight(Guid flightId)
+    public async Task<IEnumerable<BookFlightPayload>> BookFlight(Guid flightId)
     {
         var flights = await _flightsDao.GetAll();
         if (flights == null)

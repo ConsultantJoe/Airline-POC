@@ -12,10 +12,9 @@ namespace FlightSelect.Services;
 public interface IFlightSelectService
 {
     /// <summary>
-    /// Gets Flight data based on criteria passed in.
+    /// Books a flight.
     /// </summary>
-    /// <param name="origin">Origin airport to use in search.</param>
-    /// <param name="destination">Destination airport to use in search.</param>
-    /// <returns>List of Flight results.</returns>
-    public Task<IEnumerable<FlightSelectPayload>> BookFlight(Guid flightId);
+    /// <param name="flightId">FlightId of the .</param>
+    /// <returns>Flight that was added to the booking..</returns>
+    public Task<IEnumerable<BookFlightPayload>> BookFlight(Guid flightId);
 }

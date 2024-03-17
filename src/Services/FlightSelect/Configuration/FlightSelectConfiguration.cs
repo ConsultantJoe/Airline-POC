@@ -5,7 +5,7 @@
 namespace FlightSelect.Configuration;
 
 /// <summary>
-/// Configuraton for the Flight Search populated from appsettings.
+/// Configuraton for the Flight select service populated from appsettings.
 /// </summary>
 public class FlightSelectConfiguration
 {

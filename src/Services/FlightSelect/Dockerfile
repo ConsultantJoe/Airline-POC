@@ -3,23 +3,23 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER app
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 8090
+EXPOSE 8091
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["FlightSearchService.csproj", "."]
-RUN dotnet restore "./FlightSearchService.csproj"
+COPY ["FlightSelectService.csproj", "."]
+RUN dotnet restore "./FlightSelectService.csproj"
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "./FlightSearchService.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./FlightSelectService.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./FlightSearchService.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./FlightSelectService.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "FlightSearchService.dll"]
+ENTRYPOINT ["dotnet", "FlightSelectService.dll"]

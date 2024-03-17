@@ -1,4 +1,4 @@
-// <copyright file="FlightSearchController.cs" company="Consultant Joes Inc">
+// <copyright file="FlightSelectController.cs" company="Consultant Joes Inc">
 // Copyright (c) Consultant Joes Inc. All rights reserved.
 // </copyright>
 
@@ -31,13 +31,12 @@ public class FlightSelectController : ControllerBase
     }
 
     /// <summary>
-    /// Find flights for a given set of parameters.
+    /// Books a flight.
     /// </summary>
-    /// <param name="origin">Origin airport to use in search.</param>
-    /// <param name="destination">Destination airport to use in search.</param>
-    /// <returns>List of Flight results.</returns>
+    /// <param name="flightId">FlightId of the flight to add to the booking.</param>
+    /// <returns>Flight that was added to the booking.</returns>
     [HttpPost(Name = "BookFlight")]
-    public async Task<IEnumerable<FlightSelectPayload>> Get(Guid flightId)
+    public async Task<IEnumerable<BookFlightPayload>> Post(Guid flightId)
     {
         _logger.LogInformation("Getting Flights from the FlightSearchService");
         return await _flightSelectService.BookFlight(flightId);

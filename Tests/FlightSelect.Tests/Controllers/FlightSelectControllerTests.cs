@@ -1,4 +1,4 @@
-// <copyright file="FlightSearchControllerTests.cs" company="Consultant Joes Inc">
+// <copyright file="FlightSelectControllerTests.cs" company="Consultant Joes Inc">
 // Copyright (c) Consultant Joes Inc. All rights reserved.
 // </copyright>
 
@@ -10,7 +10,7 @@ using NSubstitute;
 namespace FlightSelect.Tests;
 
 /// <summary>
-/// Test class for testing the FlightSearchController.
+/// Test class for testing the FlightSelectController.
 /// </summary>
 public class FlightSelectControllerTests
 {
@@ -22,7 +22,7 @@ public class FlightSelectControllerTests
     public void ConstructorShouldThrowError_WhenILoggerIsNull()
     {
         // Arrange, Act, and Assert
-       Assert.Throws<ArgumentNullException>(() => { new FlightSearchController(null, Substitute.For<IFlightSearchService>()); });
+       Assert.Throws<ArgumentNullException>(() => { new FlightSelectController(null, Substitute.For<IFlightSelectService>()); });
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ public class FlightSelectControllerTests
     public void ConstructorShouldThrowError_WhenIFlightSearchServiceIsNull()
     {
         // Arrange, Act, and Assert
-        Assert.Throws<ArgumentNullException>(() => { new FlightSearchController(Substitute.For<ILogger<FlightSearchController>>(), null); });
+        Assert.Throws<ArgumentNullException>(() => { new FlightSelectController(Substitute.For<ILogger<FlightSelectController>>(), null); });
     }
 
     /// <summary>
@@ -40,17 +40,17 @@ public class FlightSelectControllerTests
     /// </summary>
     /// <returns>A Empty Task.</returns>
     [Fact]
-    public async Task GetShouldReturnPayload_WhenCorrectParametersArePassed()
+    public async Task PostShouldReturnPayload_WhenCorrectParametersArePassed()
     {
         // Arrange
-        var searchService = Substitute.For<IFlightSearchService>();
-        searchService.FindFlights(string.Empty, string.Empty)
-            .ReturnsForAnyArgs(Task.FromResult(FlightSelectHelper.GetFlightSearchPayload()));
+        var searchService = Substitute.For<IFlightSelectService>();
+        searchService.BookFlight(Guid.Empty)
+            .ReturnsForAnyArgs(Task.FromResult(FlightSelectHelper.GetBookFlightPayload()));
 
-        var controller = new FlightSearchController(Substitute.For<ILogger<FlightSearchController>>(), searchService);
+        var controller = new FlightSelectController(Substitute.For<ILogger<FlightSelectController>>(), searchService);
 
         // Act
-        var result = await controller.Get("DEN", "JFK");
+        var result = await controller.Post(new Guid("2fc3f906-3dc2-4c17-bf0d-ec5533c5a2af"));
 
         // Assert
         Assert.NotNull(result);

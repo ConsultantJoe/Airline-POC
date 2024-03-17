@@ -1,4 +1,4 @@
-﻿// <copyright file="FlightSearchServiceTests.cs" company="Consultant Joes Inc">
+﻿// <copyright file="FlightSelectServiceTests.cs" company="Consultant Joes Inc">
 // Copyright (c) Consultant Joes Inc. All rights reserved.
 // </copyright>
 
@@ -10,7 +10,7 @@ using NSubstitute;
 namespace FlightSelect.Tests.Services;
 
 /// <summary>
-/// Tests for the FlightSearchService.
+/// Tests for the FlightSelectService.
 /// </summary>
 public class FlightSelectServiceTests
 {
@@ -22,17 +22,17 @@ public class FlightSelectServiceTests
     public void ConstructorShouldThrowError_WhenILoggerIsNull()
     {
         // Arrange, Act, and Assert
-        Assert.Throws<ArgumentNullException>(() => { new FlightSearchService(null, Substitute.For<IFlightsDao>()); });
+        Assert.Throws<ArgumentNullException>(() => { new FlightSelectService(null, Substitute.For<IFlightsDao>()); });
     }
 
     /// <summary>
     /// Tests the IFlightsDao missing in the constructor.
     /// </summary>
     [Fact]
-    public void ConstructorShouldThrowError_WhenIFlightSearchServiceIsNull()
+    public void ConstructorShouldThrowError_WhenIFlightSelectServiceIsNull()
     {
         // Arrange, Act, and Assert
-        Assert.Throws<ArgumentNullException>(() => { new FlightSearchService(Substitute.For<ILogger<FlightSearchService>>(), null); });
+        Assert.Throws<ArgumentNullException>(() => { new FlightSelectService(Substitute.For<ILogger<FlightSelectService>>(), null); });
     }
 
     /// <summary>
@@ -40,17 +40,17 @@ public class FlightSelectServiceTests
     /// </summary>
     /// <returns>A Empty Task.</returns>
     [Fact]
-    public async Task FindFlightsShouldReturnPayload_WhenCorrectParametersArePassed()
+    public async Task BookFlightShouldReturnPayload_WhenCorrectParametersArePassed()
     {
         // Arrange
         var flightsDao = Substitute.For<IFlightsDao>();
         flightsDao.GetAll()
-            .Returns(Task.FromResult(FlightSelectHelper.GetFlightSearchPayload()));
+            .Returns(Task.FromResult(FlightSelectHelper.GetBookFlightPayload()));
 
-        var service = new FlightSearchService(Substitute.For<ILogger<FlightSearchService>>(), flightsDao);
+        var service = new FlightSelectService(Substitute.For<ILogger<FlightSelectService>>(), flightsDao);
 
         // Act
-        var flights = await service.FindFlights("DEN", "JFK");
+        var flights = await service.BookFlight(new Guid("2fc3f906-3dc2-4c17-bf0d-ec5533c5a2af"));
 
         // Assert
         Assert.NotNull(flights);
@@ -62,17 +62,17 @@ public class FlightSelectServiceTests
     /// </summary>
     /// <returns>A Empty Task.</returns>
     [Fact]
-    public async Task FindFlightsShouldReturnEmptyPayload_WhenCorrectParametersArePassed()
+    public async Task BookFlightShouldReturnEmptyPayload_WhenCorrectParametersArePassed()
     {
         // Arrange
         var flightsDao = Substitute.For<IFlightsDao>();
         flightsDao.GetAll()
-            .Returns(Task.FromResult(FlightSelectHelper.GetFlightSearchPayload()));
+            .Returns(Task.FromResult(FlightSelectHelper.GetBookFlightPayload()));
 
-        var service = new FlightSearchService(Substitute.For<ILogger<FlightSearchService>>(), flightsDao);
+        var service = new FlightSelectService(Substitute.For<ILogger<FlightSelectService>>(), flightsDao);
 
         // Act
-        var flights = await service.FindFlights("DEN", "SEA");
+        var flights = await service.BookFlight(new Guid("77ea4269-ff8b-42ff-a8c5-92e399270dbc"));
 
         // Assert
         Assert.NotNull(flights);

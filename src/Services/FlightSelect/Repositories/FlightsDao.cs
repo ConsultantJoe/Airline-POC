@@ -25,7 +25,7 @@ public class FlightsDao : IFlightsDao
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<FlightSelectPayload>> GetAll()
+    public async Task<IEnumerable<BookFlightPayload>> GetAll()
     {
         var flightsJson = new FileStream(_flightSearchConfiguration.FlightsDataPath, FileMode.Open, FileAccess.Read);
 
@@ -34,6 +34,6 @@ public class FlightsDao : IFlightsDao
             throw new ArgumentNullException(nameof(flightsJson));
         }
 
-        return await JsonSerializer.DeserializeAsync<List<FlightSelectPayload>>(flightsJson) ?? throw new ArgumentNullException($"Unable to deserilize {_flightSearchConfiguration.FlightsDataPath}.");
+        return await JsonSerializer.DeserializeAsync<List<BookFlightPayload>>(flightsJson) ?? throw new ArgumentNullException($"Unable to deserilize {_flightSearchConfiguration.FlightsDataPath}.");
     }
 }

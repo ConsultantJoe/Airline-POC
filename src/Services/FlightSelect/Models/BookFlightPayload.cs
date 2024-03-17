@@ -1,4 +1,4 @@
-﻿// <copyright file="FlightSearchPayload.cs" company="Consultant Joes Inc">
+﻿// <copyright file="BookFlightPayload.cs" company="Consultant Joes Inc">
 // Copyright (c) Consultant Joes Inc. All rights reserved.
 // </copyright>
 
@@ -7,7 +7,7 @@ namespace FlightSelect.Models;
 /// <summary>
 /// Payload for a flight search.
 /// </summary>
-public class FlightSelectPayload
+public class BookFlightPayload
 {
     /// <summary>
     /// Gets or Sets the Flight Id.

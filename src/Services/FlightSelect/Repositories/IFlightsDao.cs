@@ -15,5 +15,5 @@ public interface IFlightsDao
     /// Gets all data from the Flights.json file.
     /// </summary>
     /// <returns>Collection of FlightSearchPayload objects.</returns>
-    Task<IEnumerable<FlightSelectPayload>> GetAll();
+    Task<IEnumerable<BookFlightPayload>> GetAll();
 }
