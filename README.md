@@ -1,11 +1,9 @@
 # Airline-POC
 
 ## Description
-This POC is a basic example of how I write microservices.  It adheres to SOLID principals. Using various good practices such as all dependencies injected via constructors, Services for business logic and repositories for data management, and containerization for ease of scalability.
+This POC is a basic example of how I write microservices.  It adheres to SOLID principals. Using various good practices such as all dependencies injected via constructors, services for business logic, repositories for data management, and containerization for ease of scalability.
 
-The service its self is base on a simple flight search. Its source data consists of a JSON file and is queried via Linq.  Logging is implemented via Serilog and Seq is also utilized for log management. 
-
-I will eventually add more services and [Dapr](https://docs.dapr.io/concepts/overview/) support.  It would be nice to implement Dapr Actors for session management.  I have used this in the past to manage user sessions which, when utilized across all platforms, allows a user to start a session on one platform and complete it on another.
+The service is baseed on a simple flight search. Its source data consists of a JSON file and is queried via Linq.  Logging is implemented via Serilog. Seq is also utilized for log management. 
 
 ## Flight Search Sequence Diagram
 ```mermaid
@@ -32,10 +30,10 @@ sequenceDiagram
  - Visual Studio/Rider/VS.Code
 
 ### Setup
-Docker Desktop is not necessarily required but you would need to run Seq somewhere otherwise you will need to disable the Seq sink in  appsettings. You should be able to simply clone the project and run docker compose.  If everything went well the FlightSearch swagger will pop up in a browser. You can also access Seq using the standard Seq URL of http://localhost:5341.
+Docker Desktop is not necessarily required but you would need to run Seq somewhere otherwise you will need to disable the Seq sink in  appsettings. You should be able to simply clone the project and run docker compose in Visual Studio.  If everything went well the FlightSearch swagger will pop up in a browser. You can also access Seq using the standard Seq URL of http://localhost:5341.
 
 ### Running 
-You can use any of the following city pares to return data from the service. The source JSON is located in data/Flights.json.
+You can use any of the following city pairs to return data from the service. The source JSON is located in data/Flights.json.
 - DEN to JFK
 - DEN to ORD
 - DEN to LAX
@@ -44,4 +42,4 @@ You can use any of the following city pares to return data from the service. The
 - SEA to MIA
 
 ### Testing 
-A quick note on testing. I used NSubstitute over Moq for unit testing because of Moq harvesting emails a while back using SponsorLink. You can read more about that fiasco [here](https://www.techradar.com/pro/top-open-source-project-moq-slammed-for-secretly-collecting-user-data).
+A quick note on testing. I used NSubstitute over Moq for unit testing because of Moq was harvesting emails a while back using SponsorLink. You can read more about that fiasco [here](https://www.techradar.com/pro/top-open-source-project-moq-slammed-for-secretly-collecting-user-data).
