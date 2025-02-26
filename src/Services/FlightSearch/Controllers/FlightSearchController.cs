@@ -37,7 +37,7 @@ public class FlightSearchController : ControllerBase
     /// <param name="destination">Destination airport to use in search.</param>
     /// <returns>List of Flight results.</returns>
     [HttpGet(Name = "FindFlights")]
-    public async Task<IEnumerable<FlightSearchPayload>> Get(string origin, string destination)
+    public async Task<IEnumerable<Flight>> Get(string origin, string destination)
     {
         _logger.LogInformation("Getting Flights from the FlightSearchService");
         return await _flightSearchService.FindFlights(origin, destination);

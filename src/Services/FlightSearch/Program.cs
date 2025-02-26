@@ -2,6 +2,9 @@
 // Copyright (c) Consultant Joes Inc. All rights reserved.
 // </copyright>
 
+using FlightSearch.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace FlightSearch;
 
 /// <summary>
@@ -19,6 +22,9 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllers();
+
+        // Add DBContext with PostgresSQL.
+        builder.Services.AddDbContext<ApplicationDbContext>();
 
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
@@ -39,10 +45,20 @@ public class Program
             app.UseSwaggerUI();
         }
 
+        // Because this is a test app and I want the data refreshed everytgimEnsure the database is created when the app starts
+        using (var scope = app.Services.CreateScope())
+        {
+            var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+            // Drop the database if it exists
+            dbContext.Database.EnsureDeleted();
+
+            // Ensure the database is created
+            dbContext.Database.EnsureCreated();
+        }
+
         app.UseHttpsRedirection();
-
         app.UseAuthorization();
-
         app.MapControllers();
 
         app.Run();

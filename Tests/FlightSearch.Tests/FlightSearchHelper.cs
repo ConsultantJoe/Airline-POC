@@ -15,17 +15,17 @@ public static class FlightSearchHelper
     /// Gets a FlightSearchPayload for unit testing.
     /// </summary>
     /// <returns>A populated FlightSearchPayload.</returns>
-    public static IEnumerable<FlightSearchPayload> GetFlightSearchPayload() =>
-        new List<FlightSearchPayload>
+    public static IEnumerable<Flight> GetFlightSearchPayload() =>
+        new List<Flight>
         {
-            new FlightSearchPayload
+            new Flight
             {
                 ArrivalTime = DateTime.Now,
                 DepartureTime = DateTime.Now.AddHours(-4),
                 Origin = "DEN",
                 Destination = "JFK",
                 Price = 400.00m,
-                FlightId = Guid.NewGuid(),
+                FlightId = 1,
                 FlightNumber = "AS450",
             },
         };

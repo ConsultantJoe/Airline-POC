@@ -7,14 +7,14 @@ services:
       context: src/Services/FlightSearch
       dockerfile: Dockerfile
     networks:
-      - flightsearch-network
+      - apoc-network
        
   seq:
     image: datalust/seq:latest
     networks:
-      - flightsearch-network
+      - apoc-network
 
 
 networks:
-  flightsearch-network:
-    driver: bridge
+  apoc-network:
+    external: true

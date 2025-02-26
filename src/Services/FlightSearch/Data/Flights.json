@@ -1,6 +1,6 @@
   [
     {
-      "FlightId": "2fc3f906-3dc2-4c17-bf0d-ec5533c5a2af",
+      "FlightId": "1",
       "FlightNumber": "AS123",
       "Origin": "DEN",
       "Destination": "JFK",
@@ -9,7 +9,7 @@
       "Price": 250.00
     },
     {
-      "FlightId": "65457a8d-ee88-4f82-91d6-49d7c98c9437",
+      "FlightId": "2",
       "FlightNumber": "AS456",
       "Origin": "DEN",
       "Destination": "ORD",
@@ -18,7 +18,7 @@
       "Price": 180.00
     },
     {
-      "FlightId": "cfb7f38e-1e14-4f95-a2c0-265c59f0b0b7",
+      "FlightId": "3",
       "FlightNumber": "AS789",
       "Origin": "DEN",
       "Destination": "LAX",
@@ -27,7 +27,7 @@
       "Price": 300.00
     },
     {
-      "FlightId": "d67aaf0d-6847-43c7-a65e-929e40a49777",
+      "FlightId": "4",
       "FlightNumber": "AS234",
       "Origin": "SEA",
       "Destination": "SFO",
@@ -36,7 +36,7 @@
       "Price": 200.00
     },
     {
-      "FlightId": "4ebbe143-fbcd-4a7c-b513-2c16c83670ac",
+      "FlightId": "5",
       "FlightNumber": "AS567",
       "Origin": "SEA",
       "Destination": "DFW",
@@ -45,7 +45,7 @@
       "Price": 320.00
     },
     {
-      "FlightId": "6b09f5c1-1520-430b-89d4-c42c0b9de0f4",
+      "FlightId": "6",
       "FlightNumber": "AS890",
       "Origin": "SEA",
       "Destination": "MIA",

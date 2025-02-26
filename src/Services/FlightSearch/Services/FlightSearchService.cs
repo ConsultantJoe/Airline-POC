@@ -28,7 +28,7 @@ public class FlightSearchService : IFlightSearchService
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<FlightSearchPayload>> FindFlights(string origin, string destination)
+    public async Task<IEnumerable<Flight>> FindFlights(string origin, string destination)
     {
         var flights = await _flightsDao.GetAll();
         if (flights == null)

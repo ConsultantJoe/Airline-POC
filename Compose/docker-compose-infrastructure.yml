@@ -1,0 +1,41 @@
+# Docker-compose file for the Postgres resources and the shared network
+# This docker compse is ran seprately so the database does not have to restart
+# everytime debugging starts. 
+# start command: docker compose -f docker-compose-database.yml up -d 
+
+name: apoc-infrastructure
+
+services:
+  apoc-postgres-server:
+    container_name: apoc-postgres-server
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: apoc_admin
+      POSTGRES_PASSWORD: secret
+    networks: [apoc-network]
+    ports: ["5432:5432"]
+    volumes:
+      - type: volume
+        source: postgres-data
+        target: /var/lib/postgresql/data
+
+  apoc-pgadmin4:
+    container_name: apoc-pgadmin4
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: joe@joe.com
+      PGADMIN_DEFAULT_PASSWORD: secret
+      PGADMIN_DISABLE_POSTFIX: true #Disable server used to send password reset emails.
+    networks: [apoc-network]
+    ports: ["7070:80"]
+    volumes:
+      - pgadmin4-data:/var/lib/pgadmin
+
+networks:
+  apoc-network:
+    name: apoc-network
+
+volumes:
+  postgres-data:
+  pgadmin4-data:
+  
